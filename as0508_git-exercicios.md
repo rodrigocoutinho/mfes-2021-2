@@ -4,17 +4,28 @@ Responda as questões abaixo (exercite os comandos do git correspondentes). Lemb
 
 
 1. Qual o comando para obter a versão instalada do Git?
+  1.1 **Resposta:** git --version
 2. Qual o efeito da execução de cada um dos comandos abaixo?
   a. git help
+  2.1 **Resposta:** mostra opções para ajudar, em relação aos comandos e descrições disponiveis.
   b. git help checkout
+  2.2 **Resposta:** abre o manual do comando checkout.
   c. git help merge
+  2.3 **Resposta:** abre manual do comando merge
   d. git init
+  2.4 **Resposta:** inicializa o git na diretório.
   e. git add --all
+  2.5  **Resposta:** adiciona os arquivos a lista de commit
   f. git add -u
+  2.6 **Resposta:** atualiza o indece
   g. git config -l
+  2.7 **Resposta:** mostra as variaveis e seus valores, definidos no arquivo de configuração
   h. git mv a.txt b.txt
+  2.8 **Resposta:** renomeia o arquivo.
   i. git reset --hard
+  2.9 **Resposta:** descarta alterações do commit.
   j. git log -27
+  2.10 **Resposta:**  mostra log do commit
 3. O fluxo “clássico” de interação com o Git é algo como “alterar um ou mais arquivos”, “acrescentar essas mudanças para serem contemplados no próximo commit” e, finalmente, executar um “commit”. Quais os comandos necessários para realizar os dois últimos “passos” desse fluxo?
 4. Qual o comando deve ser executado para identificar o que foi alterado desde o último “commit”?
 5. Em um dado repositório, arquivos simplesmente copiados para lá, ou seja, _untracked_, podem ser exibidos/identificados com que comando?
