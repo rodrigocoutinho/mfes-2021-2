@@ -37,6 +37,6 @@ console.log('\n');
 console.log('Zoologico...');
 
 
-const animais = [animal1, animal2, animal3, animal1, animal2, animal3, animal1, animal2, animal3, animnal1];
+const animais = [animal1, animal2, animal3, animal1, animal2, animal3, animal1, animal2, animal3, animal1];
 const zoo = new Zoologico(animais);
 zoo.exibir();

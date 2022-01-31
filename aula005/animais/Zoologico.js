@@ -1,6 +1,7 @@
-import Cachorro from "./Cachorro";
-import Cavalo from "./Cavalo";
-import Preguica from "./Preguica";
+import Animal from "./Animal.js";
+import Cachorro from "./Cachorro.js";
+import Cavalo from "./Cavalo.js";
+import Preguica from "./Preguica.js";
 
 export default class Zoologico{
     #jaulas 
@@ -12,6 +13,7 @@ export default class Zoologico{
     exibir(){
         this.#jaulas.forEach(function(item, indice, array){
             console.log(item, indice);
+            item.agir();
         })
     }
 }
