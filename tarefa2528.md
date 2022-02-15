@@ -4,16 +4,16 @@ Considerando o conteúdo apresentado na aula do dia 09/02/2022, sobre linguagens
 
 |Linguagem|Paradigma de Programação|Modelo de Execução|Propósito|Nível|Geração|
 |---|---|---|---|---|---|
-|Java|   |   |   |   |   |
-|JavaScript|   |   |   |   |   |
-|Python|   |   |   |   |   |
-|C++|   |   |   |   |   |
-|C#|   |   |   |   |   |
-|PHP|   |   |   |   |   |
-|GO Lang|   |   |   |   |   |
-|Flutter (Dart)|   |   |   |   |   |
-|HTML|   |   |   |   |   |
-|CSS|   |   |   |   |   |
+|Java| Orientada a objetos, estruturada, imperativa, funcional, reflexiva e concorrente | Compilada, interpretada  | Geral  | Alto  |  3a |
+|JavaScript| Orientada a objetos, imperativa, funcional  | Interpretada  |  Geral |  Alto |  3a |
+|Python| Orientada a objetos, imperativa, funcional, procedural  | Compilada, interpretada  |  Geral |  Alto |  3a / 5a |
+|C++|  orientada a objetos, imperativa, procedural |  Compilada | Geral  | Alto  |  3a |
+|C#| estruturada, imperativa, concorrente, funcional, orientada a eventos, orientada a objetos, reflexiva  | Compilada, interpretada  |  Geral |  Alto |  3a |
+|PHP| procedural, reflexiva, orientada a objetos, funcional  | Interpretada  | Especifico  | Alto  |  4a |
+|GO Lang|  concorrente, imperativa, estruturada |  Compilada |  Geral | Medio  | 3a  |
+|Flutter (Dart)|  orientada a objetos, imperativa, funcional |  Compilada | Geral  | Alto  |  3a |
+|HTML| Declarativa, marcação  |  Interpretada | Especifico  | Alto  | 4a  |
+|CSS|  Declarativa, Estilos | Interpretada  |  Especifico | Medio  |  4a |
 
 INSTRUÇÕES:
 1. Tipo: Tarefa Individual
