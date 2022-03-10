@@ -2,7 +2,7 @@
 ## Plataforma de Avaliação de Usabilidade de Software
 ***
 ### Ferramentas de apoio:
-[Slack](integraoi.slack.com)
+[Slack](https://integraoi.slack.com)
 
 
 
