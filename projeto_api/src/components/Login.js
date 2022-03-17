@@ -5,24 +5,32 @@ import api from "../services/api";
 const Login = () => {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     async function handleLogin() {
+        setError('');
         const data = {
             email: user,
             password: password
         }
-        const response = await api.post('http://localhost:8080/api/login', data);
 
-        if (response.status == 200) {
+        try {
+            const response = await api.post('/login', data);
+            sessionStorage.setItem("token", response.data.token);
             alert(response.data.mensagem);
             window.location.href = "http://localhost:3000/painel";
-        } else {
-            alert(response.data.mensagem);
+        } catch (error) {
+            const { mensagem } = error.response.data;
+            setError(mensagem);
+            alert(mensagem);
         }
+    }
+    function onSubmit(ev) {
+        ev.preventDefault();
     }
 
     return (
-        <form>
+        <form onSubmit={onSubmit}>
             <h1>PLAUS</h1>
             <h3>Login</h3>
             <div className="form-group">
@@ -42,12 +50,13 @@ const Login = () => {
                 </div>
                 <p />
             </div>
-            <button type="submit" onClick={handleLogin}className="btn btn-primary btn-block">Submit</button> &nbsp;&nbsp;&nbsp;
+            <button type="submit" onClick={handleLogin} className="btn btn-primary btn-block">Submit</button> &nbsp;&nbsp;&nbsp;
 
             <a href="/register">Register</a>
             <p className="forgot-password text-right">
                 Forgot <a href="#">password?</a>
             </p>
+            {error !== '' && (<p style={{ color: "#ff0000" }}>{error}</p>)}
         </form>
     );
 }

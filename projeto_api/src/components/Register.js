@@ -6,9 +6,11 @@ export default function Register() {
 
     const [name, setName] = useState('');
     const [fone, setFone] = useState('');
-    const [tipo, setTipo] = useState('');
+    const [tipo, setTipo] = useState('Usuario');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const [error, setError] = useState('');
 
     //Função que define os dados do formuário e envia os dados para o backend
     async function handleSubmit() {
@@ -20,21 +22,38 @@ export default function Register() {
             password: password
         }
 
-        console.log(data)
-        //Envio dos dados para api
-        const response = await api.post('http://localhost:8080/api/register', data);
+        //console.log(data)
 
-        if (response.status == 200) {
-            //window.location.href='/login'
+        try {
+            //Envio dos dados para api
+            const response = await api.post('http://localhost:8080/api/register', data);
+
             alert(response.data.mensagem);
-        } else {
-            alert(response.data.mensagem);
+            //Limpa os dados do formulário
+            setName('');
+            setFone('');
+            setTipo('');
+            setEmail('');
+            setPassword('');
+
+            setError(response.data.mensagem);
+
+            // envia para pagina de login
+            window.location.href = '/login'
+        } catch (error) {
+            const { mensagem } = error.response.data;
+            setError(mensagem);
+            alert(mensagem);
         }
+    }
+
+    function onSubmit(ev) {
+        ev.preventDefault();
     }
 
 
     return (
-        <form >
+        <form onSubmit={onSubmit} >
             <h3>Register</h3>
             <div className="form-group">
                 <label>Full name</label>
@@ -113,6 +132,7 @@ export default function Register() {
             <p className="forgot-password text-right">
                 Already registered <a href="/login">sign in?</a>
             </p>
+            {error !== '' && (<p style={{ color: "#ff0000" }}>{error}</p>)}
         </form>
     );
 }

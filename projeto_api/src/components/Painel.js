@@ -4,7 +4,7 @@ import api from "../services/api"
 //Dashboard onde serão exibidas as pesquisas
 const Painel = () => {
     const [user, setUser] = useState([]);
-
+    const token = sessionStorage.getItem('token');
     //consumindo os dados da api, para testar a comunicação entre back e front
     useEffect(() => {
         api
