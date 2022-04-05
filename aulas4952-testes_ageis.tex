@@ -1,0 +1,221 @@
+\documentclass[xcolor=dvipsnames,envcountsect,table]{beamer}
+
+ \mode<presentation>
+ {
+   \pgfdeclaremask{ufgmask}{./figuras/INFVertical.jpg}
+   \logo{\pgfimage[mask=ufgmask,height=.8cm,interpolate=true]{./imagens/INFVertical.jpg}}
+
+   \useoutertheme[height=1cm,hideothersubsections]{sidebar}
+   \useinnertheme[shadow=true]{rounded}
+   \usecolortheme{orchid}
+   \usecolortheme{whale}
+   \usecolortheme{sidebartab}
+   \usefonttheme{professionalfonts}
+%   \usefonttheme{serif}
+
+   \setbeamertemplate{theorems}[numbered]
+%   \setbeamercolor{logo}{bg=cyan!90!black}
+   \setbeamercolor{logo}{fg=blue!50!black,bg=white!15}
+   \setbeamercolor{frametitle}{fg=white!95!blue}
+   \setbeamercolor{normal text}{fg=blue!50!black,bg=blue!5}
+ }
+ \beamerdefaultoverlayspecification{<+-| alert@+>}
+ \hypersetup{pdfpagemode=FullScreen}
+%===========================================================================
+
+%---------------------------------------------------------------- PACKAGES -
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[ansinew]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[all,dvips]{xy}
+\usepackage{multirow} 
+
+
+
+\newtheorem{conj}{Conjectura}
+\newtheorem{defi}{Defini\c{c}\~ao}
+\newtheorem{teo}{Teorema}
+\newtheorem{lema}{Lema}
+\newtheorem{prop}{Proposi\c{c}\~ao}
+\newtheorem{ex}{Exemplo}
+%------------------------------------------------------------- LATEX FILES -
+%\includeonly{
+% rep2009-introduction
+%}
+
+%------------------------------------------------------------------- COVER -
+\title{Métodos e Ferramentas de Engenharia de Software}
+\subtitle{Testes Ágeis}
+\author{Prof. Msc. Gilmar Ferreira Arantes}
+\institute[INF/UFG]{gilmar@inf.ufg.br\\
+\vspace{0.5cm}						
+           	Universidade Federal de Goi\'as\\
+           	Instituto de Inform\'atica}
+
+\date{30/03/2022}
+
+%-------------------------------------------------------------------- TITLE -
+\begin{document}
+
+\graphicspath{{./imagens/}}
+
+\begin{frame}
+% \begin{block}{}
+  \titlepage
+% \end{block}
+\end{frame}
+
+\frame[allowframebreaks,t]
+{
+  \frametitle{Sum\'ario}
+  \tableofcontents
+}
+
+% ======================================================================================SECTION
+\section{Introdução}
+% ======================================================================================SECTION
+%---------------------------------------------------------------------------------------Slide
+\begin{frame}
+    \frametitle{Manifesto Ágil}
+    \begin{figure}
+        \centering
+        \includegraphics[width=10cm]{manifesto_agil}
+        \caption[numbered]\insertcaptionnumber{ Manifesto Ágil. \cite{google2022}}
+    \end{figure}
+\end{frame}
+
+%---------------------------------------------------------------------------------------Slide
+\begin{frame}
+    \frametitle{Manifesto Ágil}
+    \begin{figure}
+        \centering
+        \includegraphics[width=10cm]{manifesto_agil}
+        \caption[numbered]\insertcaptionnumber{ Manifesto Ágil. \cite{google2022}}
+    \end{figure}
+\end{frame}
+
+%---------------------------------------------------------------------------------------Slide
+\begin{frame}
+    \frametitle{Tradicional x Ágil}
+    \begin{figure}
+        \centering
+        \includegraphics[width=10cm]{agil_tradicional}
+        \caption[numbered]\insertcaptionnumber{ Tradicional x Ágil. \cite{google2022}}
+    \end{figure}
+\end{frame}
+
+%---------------------------------------------------------------------------------------Slide
+\begin{frame}
+    \frametitle{Tradicional x Ágil - Teste}
+    \begin{figure}
+        \centering
+        \includegraphics[width=10cm]{tradicional_agil}
+        \caption[numbered]\insertcaptionnumber{ Tradicional x Ágil - Teste. \cite{caetano2012}}
+    \end{figure}
+\end{frame}
+
+%---------------------------------------------------------------------------------------Slide
+\begin{frame}
+    \frametitle{Manifesto de Teste Ágil}
+    \begin{figure}
+        \centering
+        \includegraphics[width=10cm]{manifesto_agil_teste}
+        \caption[numbered]\insertcaptionnumber{ Manifesto de Teste Ágil. \cite{duarte2019}}
+    \end{figure}
+\end{frame}
+
+%---------------------------------------------------------------------------------------Slide
+\begin{frame}
+    \frametitle{Testar Continuamente x Testar no Final}
+    \begin{itemize}
+        \item Vivemos na era da entrega contínua (Continuous Delivery) e de tal forma temos de instruir nossos times a trabalhar com Teste Contínuo (Continuous Testing) também. A cada User Story desenvolvida, a mesma deve ser testada imediatamente e corrigida se necessário, o que nos leva ao próximo valor.
+    \end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------------------------------Slide
+\begin{frame}
+    \frametitle{Prevenir x Encontrar Defeitos}
+    \begin{itemize}
+        \item O primeiro passo é o QA começar a trabalhar ANTES do desenvolvimento. Seja ajudando o \textit{Product Owner} a especificar os Critérios de Aceite corretamente, seja escrevendo seus testes automatizados usando ATDD/TDD/BDD/etc, seja fazendo \textit{Pair Programming} com os próprio programadores, para ajudá-los a deixar as funcionalidades com a maior qualidade possível.
+    \end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------------------------------Slide
+\begin{frame}
+    \frametitle{Entender o Teste x Verificar a Funcionalidade}
+    \begin{itemize}
+        \item Software é meio, não é fim. Logo, garantir a qualidade de um software não e limita a checar se ele está funcionando, mas sim se ele resolve o problema do usuário, se ele o ajuda a resolver a sua necessidade.
+        \item Assim, uma cultura de qualidade deve promover que os testes sejam feitos sempre sob perspectiva de solucionar o problema ou necessidade do usuário e jamais testar o software pelo software. Novamente, técnicas como ATDD e BDD ajudam aqui, bem como uma boa especificação ágil de requisitos e muita interação com o cliente.
+    \end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------------------------------Slide
+\begin{frame}
+    \frametitle{Construir melhor x Quebrar o Sistema}
+    \scriptsize
+    \begin{itemize}
+        \item O papel do QA \textbf{NÃO DEVE} ser quebrar o sistema, mas sim ajudar enquanto \textit{Developer} (segundo Scrum) a desenvolver o melhor sistema possível, e isso é exatamente do que se trata este valor: construir o melhor sistema ao invés de quebrar o sistema.
+        \item O racional de que a função do testador de software é ``procurar bugs'' (por mais que ele tenha uma intenção positiva de evitar que eles cheguem no usuário) é a origem de todo o mal da cultura de testes x a cultura de qualidade.
+        \item Quando se testa um software com o \textit{mindset} de qualidade, procuramos entender se o que foi desenvolvido é o melhor que podemos entregar com as condições que temos visando satisfazer o cliente. Não é apenas ver se o botão salva ao ser clicado, mas se aquele é o melhor botão para resolver o problema do cliente.
+        \item E novamente, isso não deve ser feito somente no final do desenvolvimento. O papel de um profissional de qualidade deve ser de ponta a ponta, vide o primeiro valor. Não só dele, mas como de todos membros do time.
+    \end{itemize}
+\end{frame}
+
+
+%---------------------------------------------------------------------------------------Slide
+\begin{frame}
+    \frametitle{Time Responsável x Responsabilidade do Testador}
+    \scriptsize
+    \begin{itemize}
+        \item A responsabilidade pela qualidade deve ser de \textbf{TODO} o time ao invés de somente o testador.
+        \item Um \textit{Product Owner} deve pensar constantemente na qualidade de seu entendimento e da sua comunicação dele para o time (escrita, falada, etc) para que tenhamos qualidade no requisito do projeto/produto.
+        \item Um \textit{Scrum Master/Agile Coach} deve pensar na forma como o processo do time enfatiza a qualidade desejada pelo cliente e empresa, seja minimamente através de um fluxo de valor adequado, bem como boas práticas de engenharia ágil como TDD/ATDD/BDD, \textit{Pair Programming, Code Review, Mob Programming} e muitas outras.
+        \item E os desenvolvedores são parte importantíssima em garantir a qualidade como um todo, fazendo desde um código de qualidade, com padrões concretos e adequados e seguindo as boas práticas sugeridas pelo agilista e mesmo criando práticas emergentes do time que apoiem a qualidade.
+    \end{itemize}
+\end{frame}
+
+
+% ======================================================================================SECTION
+\section{Refer\^encias}
+% ======================================================================================SECTION
+%---------------------------------------------------------------------------------------Slide
+\begin{frame}[shrink]
+ \frametitle{Referências Bibliográficas}
+ %\begin{block}{}
+ 
+\begin{thebibliography}{99}
+    \beamertemplatearticlebibitems
+    
+    \bibitem[Caetano, 2012]{caetano2012}
+    Caetano, C.
+    \newblock Testes Ágeis - Implementando os princípios ágeis.
+    \newblock {\em Egenharia de Software Magazine, Ed. 04, 2012}
+    
+    \bibitem[Duarte, 2019]{duarte2019}
+    Duarte, Luiz.
+    \newblock Agile Testing: Cultura de Qualidade em times ágeis. 
+    \newblock {\em \url{https://www.luiztools.com.br/post/agile-testing-cultura-de-qualidade-em-times-ageis/}. Acesso 27/03/2022}
+   
+    \bibitem[Google Imagens, 2022]{google2022}
+    Google Imagens
+    \newblock Google Imagens. 
+    \newblock {\em \url{http://images.google.com/}. Acesso 27/03/2022}
+
+
+
+%. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+%. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+\end{thebibliography}
+%\end{block}
+%. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  
+
+\end{frame}
+
+
+\end{document}
+

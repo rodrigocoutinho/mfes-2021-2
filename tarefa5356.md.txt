@@ -1,0 +1,17 @@
+## Tarefa Individual 011 - 30/03/2022 - Testes Ágeis
+
+1. Elaborar uma pesquisa sobre testes ágeis, tendo como fonte de pesquisa os seguintes sites:
+   1. [Testes de software ágeis – Como fazer?](https://www.gp4us.com.br/testes-de-software/)
+   2. [Testes Ágeis – Aplicando o conceito de Agilidade ao mundo da Qualidade](https://www.primecontrol.com.br/testes-ageis-aplicando-o-conceito-de-agilidade-ao-mundo-da-qualidade/)
+   3. [Testes ágeis: quais as maneiras de testar em uma equipe ágil?](https://www.fm2s.com.br/testes-ageis-quais-as-maneiras-de-testar-em-uma-equipe-agil/)
+   4. [_Agile Testing_: dicas para testes de software em times ágeis](https://imasters.com.br/agile/agile-testing-dicas-para-testes-de-software-em-times-ageis)
+   5. [Abordagem Ágil para o Processo de Teste de Software](http://www.tecnisys.com.br/noticias/2021/abordagem-agil-para-o-processo-de-teste-de-software-agile-approach-for-software-testing-process)
+   6. [Teste ágil, como implementar?](http://tmtestes.com.br/teste-agil-como-implementar/)
+   7. [_Agile Testing_: Cultura de Qualidade em times ágeis](https://www.luiztools.com.br/post/agile-testing-cultura-de-qualidade-em-times-ageis/)
+2. Depois de entender os conceitos e práticas associados ao teste ágil, solicito a elaboração de um texto, de pelo menos uma página, manifestando seu entendimento a respeito.
+
+INSTRUÇÕES:
+1. Tipo: Individual;
+2. Local de Entrega: Seu repositório da disciplina no github, _branch develop_.
+3. Data da Entrega: 02/04/2022, as 23h59min.
+4. Critério de Aceitação: Arquivo entregue, conforme solicitado.
