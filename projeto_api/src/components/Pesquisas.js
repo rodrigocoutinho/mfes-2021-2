@@ -18,7 +18,7 @@ const Pesquisas = () => {
 
   return (
     <div>
-      <Link to="pesquisas/new" className="btn btn-primary">Nova Pesquisa</Link>
+      <Link to="pesquisas/new" id="novapesquisa" className="btn btn-primary">Nova Pesquisa</Link>
       <br />
       <hr />
       {pesquisas.length === 0 && (

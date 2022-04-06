@@ -134,17 +134,17 @@ export default function FormPesquisa() {
 
         <div className="mb-3">
           <label className="form-label">Status da Pesquisa</label>
-          <select value={status} onChange={e => setStatus(e.target.value)} className="form-select" >
+          <select id="status" value={status} onChange={e => setStatus(e.target.value)} className="form-select" >
             <option value="0">Em andamento</option>
             <option value="1">Finalizada</option>
           </select>
         </div>
 
         <div className="mb-3">
-          <button type="submit" className="btn btn-primary btn-block">Salvar</button>
+          <button id="btn_salvar_pesquisa" type="submit" className="btn btn-primary btn-block">Salvar</button>
         </div>
 
-        {error && <p style={{ color: "#ff0000" }}>{error}</p>}
+        {error && <p id="mensagem_pesquisa" value={error} style={{ color: "#ff0000" }}>{error}</p>}
 
         {id && (
           <>
@@ -208,7 +208,7 @@ export default function FormPesquisa() {
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" className="btn btn-primary">Salvar</button>
+                <button id="btn_salvar_pergunta" type="submit" className="btn btn-primary">Salvar</button>
               </div>
             </form>
           </div>

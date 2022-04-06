@@ -13,8 +13,24 @@ const AppRouter = new Router();
 //Metodo post para gravação dos dados enviados da requisição para o banco.
 AppRouter.post("/api/register", async (req, res) => {
   //console.log(req.body); imprime o que foi recebido no body da requisição.
-  const email = req.body.email
-  const senha = req.body.password;
+  const { name, fone, tipo, email, password } = req.body;
+
+  // valida para não deixar passar com dados em branco
+  if (!name) {
+    return res.status(422).json({ mensagem: "O nome é obrigatório!" });
+  }
+
+  if (!fone) {
+    return res.status(422).json({ mensagem: "O telefone é obrigatório!" });
+  }
+
+  if (!email) {
+    return res.status(422).json({ mensagem: "O email é obrigatório!" });
+  }
+
+  if (!password) {
+    return res.status(422).json({ mensagem: "A senha é obrigatória!" });
+  }
 
   const verifica = await User.findAll({
     where: {
@@ -24,7 +40,7 @@ AppRouter.post("/api/register", async (req, res) => {
 
   if (verifica == 0) {
     const saltRounds = 10;
-    bcrypt.hash(senha, saltRounds, async function (err, hash) {
+    bcrypt.hash(password, saltRounds, async function (err, hash) {
       if (err) {
         console.log(err)
       }
@@ -51,8 +67,15 @@ AppRouter.post("/api/register", async (req, res) => {
 });
 
 AppRouter.post("/api/login", async (req, res) => {
-  const email = req.body.email
-  const senha = req.body.password;
+  const { email, password } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ mensagem: "O email é obrigatório!" });
+  }
+
+  if (!password) {
+    return res.status(400).json({ mensagem: "A senha é obrigatória!" });
+  }
 
   const verifica = await User.findAll({
     where: {
@@ -60,20 +83,18 @@ AppRouter.post("/api/login", async (req, res) => {
     }
   });
   if (verifica.length > 0) {
-    bcrypt.compare(senha, verifica[0].password, function (error, response) {
+    bcrypt.compare(password, verifica[0].password, function (error, response) {
       if (error) {
         res.status(400).send(error)
       }
       if (response) {
         const privateKey = 'private-key';
         const token = jwt.sign({ id: verifica[0].id }, privateKey, { expiresIn: '12h' });
-        res.send({ mensagem: "Usuario Logado", token: token })
-      } else {
-        res.status(400).send({ mensagem: "Usuário ou senha incorreta" })
+        res.status(200).send({ erro: false, mensagem: "Usuario Logado", token: token })
       }
     });
   } else {
-    res.status(400).send({ mensagem: "Não registrado" })
+    res.status(400).send({ mensagem: "Usuário ou senha incorreta" })
   }
 });
 
