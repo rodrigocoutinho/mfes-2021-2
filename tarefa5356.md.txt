@@ -10,6 +10,16 @@
    7. [_Agile Testing_: Cultura de Qualidade em times ágeis](https://www.luiztools.com.br/post/agile-testing-cultura-de-qualidade-em-times-ageis/)
 2. Depois de entender os conceitos e práticas associados ao teste ágil, solicito a elaboração de um texto, de pelo menos uma página, manifestando seu entendimento a respeito.
 
+Segundo os principios ágeis, a postura colaborativa, flexivel e adaptavel. As ofertas dos concorrentes, e expectativas dos nossos clientes podem mudar rapidamente. Podemos atuar minimizando os riscos, enquanto a equipe colabora e se adapta para ter entregas de sucesso. Apostanto principalmente no feedback para que a equipe se ajuste as mudanças.
+Temos diversos métodos de testes.
+* Desenvolvimento orientado a comportamentos (BDD): O método começa com um requisito inicial baseado no comportamento do usuário final e exige testes que sejam “legíveis por humanos”, os quais podem até substituir algumas documentações de requisitos. Começando por uma especificação funcional usando a sintaxe Gherkin: Given/When/Then, o teste orienta os desenvolvedores, testadores e proprietários de produtos que se movem pelos recursos. Usa-se também funções de teste automatizadas para determinar a integridade, refinando o código até que ele passe no teste, exceto no nível da equipe.
+
+* Desenvolvimento orientado a testes de aceitação (ATDD): A percepção do produto pelo usuário é tão importante quanto sua funcionalidade; essa perspectiva deve impulsionar o desempenho do produto para ajudar a aumentar a adoção. Exige que os testes sejam criados anteriormente e que o código seja gravado para passar nesses testes. No entanto, no ATDD os testes são tipicamente de aceitação, voltados para o cliente.
+
+Entre outros.
+
+Há dificuldades quando se fala em teste ágil, e diversos aspectos tem que ser levados em consideração. Pois não seria possivel aplicar por exemplo teste ágil em uma equipe menos experiente ou com alta criticidade por exemplo.
+
 INSTRUÇÕES:
 1. Tipo: Individual;
 2. Local de Entrega: Seu repositório da disciplina no github, _branch develop_.
