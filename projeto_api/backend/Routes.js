@@ -106,7 +106,7 @@ AppRouter.post("/api/login", async (req, res) => {
   }
 });
 
-//AppRouter.use(authMiddleware);
+AppRouter.use(authMiddleware);
 
 AppRouter.use('/api-docs', swaggerUi.serve);
 AppRouter.get('/api-docs', swaggerUi.setup(swaggerDocument));
