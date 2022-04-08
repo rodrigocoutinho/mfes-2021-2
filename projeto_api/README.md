@@ -1,6 +1,16 @@
 # PLAAUS
 ## Plataforma de Avaliação de Usabilidade de Software
 ***
+
+### `npm install` para instalar todas as dependências presentes no package.json
+
+### 
+
+### `npm start` Roda o front end
+
+### `npm run dev` roda ambos (frondend e backend) // adicionado concurrently para rodar ambos // é necessário ter instalado as dependencias da pasta /backend, acessando o diretório e usando comando `npm install`
+
+
 ### Ferramentas de apoio:
 [Slack](https://integraoi.slack.com)
 
