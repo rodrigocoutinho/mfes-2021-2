@@ -8,6 +8,9 @@ const PesquisaQuestao = require('./models/PesquisaQuestao');
 const Pesquisa = require('./models/Pesquisa');
 const authMiddleware = require('./middlewares/auth');
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
 const AppRouter = new Router();
 
 //Metodo post para gravação dos dados enviados da requisição para o banco.
@@ -98,7 +101,11 @@ AppRouter.post("/api/login", async (req, res) => {
   }
 });
 
-AppRouter.use(authMiddleware);
+//AppRouter.use(authMiddleware);
+
+AppRouter.use('/api-docs', swaggerUi.serve);
+AppRouter.get('/api-docs', swaggerUi.setup(swaggerDocument));
+
 
 //Metodo get da api, onde será retornado as informações da api
 AppRouter.get("/api/users", async (req, res) => {
