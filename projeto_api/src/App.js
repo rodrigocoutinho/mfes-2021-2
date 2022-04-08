@@ -8,6 +8,7 @@ import Painel from './components/Painel';
 import Logout from './components/Logout';
 import Pesquisas from './components/Pesquisas';
 import FormPesquisa from './components/FormPesquisa';
+import FormResposta from './components/FormResposta';
 import api from './services/api';
 
 const authToken = sessionStorage.getItem("token");
@@ -64,6 +65,7 @@ function App() {
                 <Route exact path="/pesquisas" component={Pesquisas} />
                 <Route exact path="/pesquisas/new" component={FormPesquisa} />
                 <Route exact path="/pesquisas/:id/edit" component={FormPesquisa} />
+                <Route exact path="/pesquisas/:id/responder" component={FormResposta} />
                 <Route exact path="/logout" component={Logout} />
               </>
             )}

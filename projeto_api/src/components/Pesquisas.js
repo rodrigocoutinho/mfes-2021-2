@@ -32,6 +32,7 @@ const Pesquisas = () => {
               <th scope="col">Nome</th>
               <th scope="col">Descrição</th>
               <th scope="col">Questões</th>
+              <th scope="col">Respostas</th>
               <th scope="col">Status</th>
               <th scope="col">Ações</th>
             </tr>
@@ -43,6 +44,7 @@ const Pesquisas = () => {
                 <td>{name}</td>
                 <td>{descricao}</td>
                 <td>{questoes.length}</td>
+                <td>{questoes.length > 0 ? questoes[0].respostas.length : 0 }</td>
                 <td>{status === 1 ? 'Finalizada' : 'Em andamento' }</td>
                 <td>
                   <Link to={`pesquisas/${id}/edit`} className="btn btn-warning">Editar</Link>

@@ -5,11 +5,14 @@ const Yup = require('yup');
 
 const User = require('./models/User');
 const PesquisaQuestao = require('./models/PesquisaQuestao');
+const PesquisaResposta = require('./models/PesquisaResposta');
 const Pesquisa = require('./models/Pesquisa');
 const authMiddleware = require('./middlewares/auth');
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+
+const PesquisaDisponivelController = require("./controllers/PesquisaDisponivelController");
 
 const AppRouter = new Router();
 
@@ -94,6 +97,8 @@ AppRouter.post("/api/login", async (req, res) => {
         const privateKey = 'private-key';
         const token = jwt.sign({ id: verifica[0].id }, privateKey, { expiresIn: '12h' });
         res.status(200).send({ erro: false, mensagem: "Usuario Logado", token: token })
+      }else{
+        res.status(400).send({erro: true, mensagem: "Usuário ou senha incorreta"})
       }
     });
   } else {
@@ -106,6 +111,9 @@ AppRouter.post("/api/login", async (req, res) => {
 AppRouter.use('/api-docs', swaggerUi.serve);
 AppRouter.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
+AppRouter.get("/api/pesquisas/disponiveis", PesquisaDisponivelController.index);
+AppRouter.post("/api/pesquisas/disponiveis/:id", PesquisaDisponivelController.store);
+
 
 //Metodo get da api, onde será retornado as informações da api
 AppRouter.get("/api/users", async (req, res) => {
@@ -117,7 +125,10 @@ AppRouter.get("/api/users", async (req, res) => {
 AppRouter.get("/api/pesquisas", async (req, res) => {
   const pesquisas = await Pesquisa.findAll({
     include: [{
-      model: PesquisaQuestao, as: "questoes"
+      model: PesquisaQuestao, as: "questoes",
+      include: [{
+        model: PesquisaResposta, as: "respostas"
+      }],
     }],
   });
   res.send(pesquisas);
@@ -218,6 +229,21 @@ AppRouter.post("/api/pesquisas/:id/perguntas", async (req, res) => {
   }
 
   res.send(pergunta);
+});
+
+AppRouter.get("/api/pesquisas/:id", async (req, res) => {
+  const { id } = req.params;
+  const pesquisa = await Pesquisa.findByPk(id, {
+    include: [{
+      model: PesquisaQuestao, as: "questoes"
+    }],
+  });
+
+  if (!pesquisa) {
+    return res.status(400).json({ error: 'Pesquisa não encontrada' });
+  }
+
+  res.send(pesquisa);
 });
 
 
